@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Income from './pages/Income';
+import Expense from './pages/Expense';
+import Budget from './pages/Budget';
+import Analytics from './pages/Analytics';
+import Import from './pages/Import';
 import Navigation from './components/Navigation';
 import './styles/App.css';
 
@@ -35,6 +40,26 @@ function App() {
         <Route
           path="/register"
           element={!isAuthenticated ? <Register setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/income"
+          element={isAuthenticated ? <Income /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/expense"
+          element={isAuthenticated ? <Expense /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/budget"
+          element={isAuthenticated ? <Budget /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/analytics"
+          element={isAuthenticated ? <Analytics /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/import"
+          element={isAuthenticated ? <Import /> : <Navigate to="/login" />}
         />
       </Routes>
     </Router>
