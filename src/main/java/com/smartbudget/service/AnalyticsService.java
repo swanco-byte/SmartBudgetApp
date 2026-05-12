@@ -34,7 +34,12 @@ public class AnalyticsService {
                 ))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toLinkedHashMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(
+                	    Map.Entry::getKey, 
+                	    Map.Entry::getValue,
+                	    (oldValue, newValue) -> oldValue, // Merge function (keeps existing value)
+                	    LinkedHashMap::new               // Map supplier (maintains order)
+                	));
     }
 
     public List<Map<String, Object>> getCategoryTrends(Long userId) {
