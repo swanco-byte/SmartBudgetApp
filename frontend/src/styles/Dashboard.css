@@ -1,7 +1,19 @@
 .dashboard-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
+	/* Remove margin: 0 auto; */
+	  max-width: 1200px;
+	  padding: 30px 20px;
+	  
+	  /* Add these to clear the sidebar */
+	  margin-left: 250px; 
+	  width: calc(100% - 250px);
+	  transition: all 0.3s ease; /* Smooth transition when menu toggles */
+}
+
+/* Add a class for when the sidebar is hidden/collapsed */
+.dashboard-container.full-width {
+  margin-left: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .dashboard-header {
@@ -74,12 +86,15 @@
   gap: 30px;
 }
 
-@media (max-width: 768px) {
-  .dashboard-content {
-    grid-template-columns: 1fr;
+@media (max-width: 1024px) {
+  .dashboard-container {
+    margin-left: 0;
+    width: 100%;
   }
+  .dashboard-content {
+      grid-template-columns: 1fr;
+    }
 }
-
 .section {
   background: white;
   padding: 25px;

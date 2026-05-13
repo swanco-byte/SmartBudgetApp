@@ -6,6 +6,7 @@ function Dashboard() {
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function Dashboard() {
   if (error) return <div className="error">{error}</div>;
 
   return (
-    <div className="dashboard-container">
+    <div className={`dashboard-container ${isSidebarOpen ? '' : 'full-width'}`}>
       <div className="dashboard-header">
         <h1>Welcome, {user?.username}!</h1>
         <p>Here's your financial overview</p>
